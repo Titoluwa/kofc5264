@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, Suspense } from "react";
-import RegistrationFormContent from './register-form';
-import { Mail, Phone, MapPin } from 'lucide-react';
+// import RegistrationFormContent from './register-form';
+import { Mail, Phone, MapPin, Users } from 'lucide-react';
 
 // export const metadata = {
 //   title: 'Register | Our Lady of the Prairie, Council 5264',
@@ -10,7 +10,7 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 // };
 
 export default function RegisterPage() {
-  const [formType, setFormType] = useState('');
+  const [formType, setFormType] = useState('member');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -107,7 +107,8 @@ export default function RegisterPage() {
       <section className="bg-background py-16 lg:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Form Type Selection */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+          {/* grid grid-cols-1 md:grid-cols-3 gap-4  */}
+          <div className="mb-12 gap-4 items-center flex justify-center">
             <button
               onClick={() => {
                 setFormType('member');
@@ -118,12 +119,12 @@ export default function RegisterPage() {
                 : 'border-border bg-card hover:border-accent'
                 }`}
             >
-              <div className="text-3xl mb-2">👥</div>
+              <div className="text-3xl mb-2 flex items-center justify-center text-accent"><Users/></div>
               <h3 className="font-serif text-lg font-bold text-foreground mb-1">New Member</h3>
               <p className="text-sm text-muted-foreground">Join as a Knight</p>
             </button>
 
-            <button
+            {/* <button
               onClick={() => {
                 setFormType('volunteer');
                 setSubmitted(false);
@@ -151,7 +152,7 @@ export default function RegisterPage() {
               <div className="text-3xl mb-2">🎨</div>
               <h3 className="font-serif text-lg font-bold text-foreground mb-1">Artist</h3>
               <p className="text-sm text-muted-foreground">Exhibit at Artarama</p>
-            </button>
+            </button> */}
           </div>
 
           {/* Success Message */}

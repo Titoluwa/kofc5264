@@ -5,12 +5,12 @@ export const metadata = {
 
 export default function LeadershipPage() {
   const currentOfficers = [
-    { position: 'Grand Knight', name: 'Thomas O\'Brien', email: 'tom@council5264.org', term: '2024-2025' },
-    { position: 'Deputy Grand Knight', name: 'Michael Rodriguez', email: 'michael@council5264.org', term: '2024-2025' },
-    { position: 'Chancellor', name: 'David Chen', email: 'david@council5264.org', term: '2024-2025' },
-    { position: 'Recorder', name: 'James Murphy', email: 'james@council5264.org', term: '2024-2025' },
-    { position: 'Treasurer', name: 'William Szabo', email: 'william@council5264.org', term: '2024-2025' },
-    { position: 'Advocate', name: 'Patrick Sullivan', email: 'patrick@council5264.org', term: '2024-2025' },
+    { position: 'Grand Knight', name: 'Thomas O\'Brien', email: 'tom@kofc5264.ca', term: '2024-2025' },
+    { position: 'Deputy Grand Knight', name: 'Michael Rodriguez', email: 'michael@kofc5264.ca', term: '2024-2025' },
+    { position: 'Chancellor', name: 'David Chen', email: 'david@kofc5264.ca', term: '2024-2025' },
+    { position: 'Recorder', name: 'James Murphy', email: 'james@kofc5264.ca', term: '2024-2025' },
+    { position: 'Treasurer', name: 'William Szabo', email: 'william@kofc5264.ca', term: '2024-2025' },
+    { position: 'Advocate', name: 'Patrick Sullivan', email: 'patrick@kofc5264.ca', term: '2024-2025' },
   ]
 
   const pastLeaders = [
@@ -75,7 +75,7 @@ export default function LeadershipPage() {
           <h2 className="font-serif text-4xl font-bold text-foreground mb-12 text-center">
             Council Structure
           </h2>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="bg-background rounded-xl p-8 border border-border">
               <h3 className="font-serif text-2xl font-bold text-foreground mb-4">Core Officers</h3>

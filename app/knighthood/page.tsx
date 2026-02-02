@@ -1,7 +1,7 @@
 import { Heart, Shield, Users, BookOpen } from 'lucide-react'
 
 export const metadata = {
-  title: 'What is Knighthood | Our Lady of the Prairie, Council 5264',
+  title: 'Knighthood Of Columbus | Our Lady of the Prairie, Council 5264',
   description: 'Learn about the principles, values, and calling of membership in the Knights of Columbus.',
 }
 
@@ -36,7 +36,7 @@ export default function KnighthoodPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="font-serif text-5xl lg:text-6xl font-bold mb-6 text-balance">
-              What is Knighthood?
+              Knighthood Of Columbus
             </h1>
             <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto">
               More than 140 years of Catholic men living their faith through action, service, and brotherhood.
@@ -115,7 +115,7 @@ export default function KnighthoodPage() {
                 If you're a practicing Catholic man interested in deepening your faith, building meaningful friendships, and serving your community, we'd like to meet you.
               </p>
               <a
-                href="/join"
+                href="/register"
                 className="bg-accent text-accent-foreground px-8 py-3   font-semibold hover:opacity-90 transition-opacity inline-block"
               >
                 Learn About Membership

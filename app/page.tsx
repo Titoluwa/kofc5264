@@ -64,7 +64,7 @@ export default function Home() {
   ]
 
   return (
-    <main>
+    <main id='who-we-are'>
 
       {/* Hero Section */}
       <HeroSection
@@ -107,7 +107,7 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
             <Link
-              href="/join"
+              href="/register"
               className="bg-accent text-accent-foreground px-8 py-3   font-semibold hover:opacity-90 transition-opacity text-center"
             >
               Join
@@ -131,7 +131,7 @@ export default function Home() {
       /> */}
 
       {/* Why Join Section */}
-      <section id="our-mission" className="bg-background py-16 lg:py-24">
+      <section id="what-we-do" className="bg-background py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Content */}
@@ -172,7 +172,7 @@ export default function Home() {
               </div>
 
               <Link
-                href="/join"
+                href="/register"
                 className="bg-accent text-accent-foreground px-8 py-3   font-semibold hover:opacity-90 transition-opacity inline-block mt-8"
               >
                 Join Our Mission

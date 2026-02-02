@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Calendar, MapPin, Users, Heart, BookOpen } from 'lucide-react'
+import { Calendar, MapPin, Users, Heart, BookOpen, Bell, Phone, Mail } from 'lucide-react'
 
 export default function ProgramsPage() {
   const [selectedCategory, setSelectedCategory] = useState('all')
@@ -91,7 +91,7 @@ export default function ProgramsPage() {
           <div className="flex flex-wrap gap-3 justify-center">
             <button
               onClick={() => setSelectedCategory('all')}
-              className={`px-6 py-2   font-medium transition-colors ${selectedCategory === 'all'
+              className={`px-20 py-2   font-medium transition-colors ${selectedCategory === 'all'
                 ? 'bg-accent text-accent-foreground'
                 : 'bg-card text-foreground border border-border hover:border-accent'
                 }`}
@@ -100,14 +100,14 @@ export default function ProgramsPage() {
             </button>
             <button
               onClick={() => setSelectedCategory('charitable')}
-              className={`px-6 py-2   font-medium transition-colors ${selectedCategory === 'charitable'
+              className={`px-20 py-2   font-medium transition-colors ${selectedCategory === 'charitable'
                 ? 'bg-accent text-accent-foreground'
                 : 'bg-card text-foreground border border-border hover:border-accent'
                 }`}
             >
-              Charitable
+              Volunteer
             </button>
-            <button
+            {/* <button
               onClick={() => setSelectedCategory('faith')}
               className={`px-6 py-2   font-medium transition-colors ${selectedCategory === 'faith'
                 ? 'bg-accent text-accent-foreground'
@@ -133,14 +133,15 @@ export default function ProgramsPage() {
                 }`}
             >
               Youth
-            </button>
+            </button> */}
           </div>
         </div>
       </section>
 
       {/* Programs Grid */}
-      <section className="bg-background py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* <section className="bg-background py-16 lg:py-24"> */}
+        {/* <p className="text-center text-muted-foreground">No programs at the moment</p> */}
+        {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPrograms.map((program) => (
               <div
@@ -190,8 +191,8 @@ export default function ProgramsPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </div> */}
+      {/* </section> */}
 
       {/* Calendar & Registration CTA */}
       <section className="bg-card py-16 lg:py-24">
@@ -229,12 +230,12 @@ export default function ProgramsPage() {
                 >
                   Register as Volunteer
                 </Link>
-                <Link
+                {/* <Link
                   href="/register?type=artist"
                   className="border-2 border-primary text-primary px-8 py-3   font-semibold hover:bg-primary/5 transition-colors text-center"
                 >
                   Join Artarama
-                </Link>
+                </Link> */}
               </div>
             </div>
 
@@ -244,15 +245,15 @@ export default function ProgramsPage() {
               </h3>
               <div className="space-y-6 mb-8">
                 <div>
-                  <div className="text-accent text-lg font-semibold mb-2">📧 Email Reminders</div>
+                  <div className="text-accent text-lg font-semibold mb-2 flex items-center gap-2"><Mail/> Email Reminders</div>
                   <p className="text-primary-foreground/90">Subscribe to our mailing list for program updates and schedule changes.</p>
                 </div>
                 <div>
-                  <div className="text-accent text-lg font-semibold mb-2">📱 Mobile Access</div>
+                  <div className="text-accent text-lg font-semibold mb-2 flex items-center gap-2"><Phone/> Mobile Access</div>
                   <p className="text-primary-foreground/90">View the complete calendar on our events page with real-time updates.</p>
                 </div>
                 <div>
-                  <div className="text-accent text-lg font-semibold mb-2">🔔 Updates</div>
+                  <div className="text-accent text-lg font-semibold mb-2 flex items-center gap-2"><Bell/>Updates</div>
                   <p className="text-primary-foreground/90">Cancellations and changes are posted immediately to keep you informed.</p>
                 </div>
               </div>

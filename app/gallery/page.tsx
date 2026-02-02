@@ -128,8 +128,8 @@ export default function ScrapbookPage() {
             <button
               onClick={() => setSelectedCategory('all')}
               className={`px-6 py-2   font-medium transition-colors ${selectedCategory === 'all'
-                  ? 'bg-accent text-accent-foreground'
-                  : 'bg-card text-foreground border border-border hover:border-accent'
+                ? 'bg-accent text-accent-foreground'
+                : 'bg-card text-foreground border border-border hover:border-accent'
                 }`}
             >
               All Memories
@@ -137,8 +137,8 @@ export default function ScrapbookPage() {
             <button
               onClick={() => setSelectedCategory('events')}
               className={`px-6 py-2   font-medium transition-colors ${selectedCategory === 'events'
-                  ? 'bg-accent text-accent-foreground'
-                  : 'bg-card text-foreground border border-border hover:border-accent'
+                ? 'bg-accent text-accent-foreground'
+                : 'bg-card text-foreground border border-border hover:border-accent'
                 }`}
             >
               Events
@@ -146,8 +146,8 @@ export default function ScrapbookPage() {
             <button
               onClick={() => setSelectedCategory('charitable')}
               className={`px-6 py-2   font-medium transition-colors ${selectedCategory === 'charitable'
-                  ? 'bg-accent text-accent-foreground'
-                  : 'bg-card text-foreground border border-border hover:border-accent'
+                ? 'bg-accent text-accent-foreground'
+                : 'bg-card text-foreground border border-border hover:border-accent'
                 }`}
             >
               Service
@@ -155,8 +155,8 @@ export default function ScrapbookPage() {
             <button
               onClick={() => setSelectedCategory('artarama')}
               className={`px-6 py-2   font-medium transition-colors ${selectedCategory === 'artarama'
-                  ? 'bg-accent text-accent-foreground'
-                  : 'bg-card text-foreground border border-border hover:border-accent'
+                ? 'bg-accent text-accent-foreground'
+                : 'bg-card text-foreground border border-border hover:border-accent'
                 }`}
             >
               Artarama
@@ -164,8 +164,8 @@ export default function ScrapbookPage() {
             <button
               onClick={() => setSelectedCategory('youth')}
               className={`px-6 py-2   font-medium transition-colors ${selectedCategory === 'youth'
-                  ? 'bg-accent text-accent-foreground'
-                  : 'bg-card text-foreground border border-border hover:border-accent'
+                ? 'bg-accent text-accent-foreground'
+                : 'bg-card text-foreground border border-border hover:border-accent'
                 }`}
             >
               Youth
@@ -173,8 +173,8 @@ export default function ScrapbookPage() {
             <button
               onClick={() => setSelectedCategory('faith')}
               className={`px-6 py-2   font-medium transition-colors ${selectedCategory === 'faith'
-                  ? 'bg-accent text-accent-foreground'
-                  : 'bg-card text-foreground border border-border hover:border-accent'
+                ? 'bg-accent text-accent-foreground'
+                : 'bg-card text-foreground border border-border hover:border-accent'
                 }`}
             >
               Faith
@@ -185,7 +185,8 @@ export default function ScrapbookPage() {
 
       {/* Gallery Grid */}
       <section className="bg-background py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* <p className="text-center text-muted-foreground">No gallery at the moment</p> */}
+        {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {filteredItems.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredItems.map((item) => (
@@ -218,11 +219,11 @@ export default function ScrapbookPage() {
               </button>
             </div>
           )}
-        </div>
+        </div> */}
       </section>
 
       {/* Share Your Memories */}
-      <section className="bg-card py-16 lg:py-24">
+      {/* <section className="bg-card py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-serif text-4xl font-bold text-foreground mb-6">
             Share Your Memories
@@ -231,16 +232,16 @@ export default function ScrapbookPage() {
             Do you have photos from council events, service projects, or special moments? We'd love to add your memories to our digital scrapbook!
           </p>
           <a
-            href="mailto:scrapbook@council5264.org?subject=Memory Submission"
+            href="mailto:gallery@kofc5264.ca?subject=Memory Submission"
             className="bg-accent text-accent-foreground px-8 py-3   font-semibold hover:opacity-90 transition-opacity inline-block"
           >
             Submit Photos
           </a>
           <p className="text-muted-foreground text-sm mt-4">
-            Email scrapbook@council5264.org with high-resolution images, captions, and the year/event details.
+            Email gallery@kofc5264.ca with high-resolution images, captions, and the year/event details.
           </p>
         </div>
-      </section>
+      </section> */}
 
       {/* Timeline Stats */}
       <section className="bg-primary text-primary-foreground py-16 lg:py-24">
