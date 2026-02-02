@@ -95,7 +95,7 @@ export default function Header() {
               <Link href="/gallery" className="px-4 py-3 hover:bg-white/10 transition-colors border-b border-white/20 uppercase tracking-wide">
                 Gallery
               </Link>
-              <Link href="/program" className="px-4 py-3 hover:bg-white/10 transition-colors uppercase tracking-wide">
+              <Link href="/programs" className="px-4 py-3 hover:bg-white/10 transition-colors uppercase tracking-wide">
                 Programs & Events
               </Link>
               <Link href="/register" className="px-4 py-3 border-1 border-accent text-accent font-semibold hover:bg-accent/10 transition-colors text-center">
