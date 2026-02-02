@@ -35,8 +35,8 @@ export default function HeroSection({
           {/* Left Column - Images */}
           {imageUrl && (
             <div className="flex gap-4">
-              <div className="flex-1 rounded-2xl overflow-hidden h-96 lg:h-full bg-white/10 flex items-center justify-center">
-                <Image src={"/images/kofc-logo.png"} alt="Logo" className="w-full h-full object-cover" width={100} height={100} />
+              <div className="flex-1 rounded-2xl overflow-hidden h-96 lg:h-full flex items-center justify-center">
+                <Image src={"/images/kofc-5264-logo.png"} alt="Logo" className="w-full h-full object-cover" width={100} height={100} />
               </div>
             </div>
           )}

@@ -71,8 +71,11 @@ export default function Header() {
               <Link href="/gallery" className="px-4 py-2 hover:bg-white/10 transition-colors text-sm font-medium uppercase tracking-wide">
                 Gallery
               </Link>
-              <Link href="/events" className="px-4 py-2 hover:bg-white/10 transition-colors text-sm font-medium uppercase tracking-wide">
-                Events & Information
+              <Link href="/programs" className="px-4 py-2 hover:bg-white/10 transition-colors text-sm font-medium uppercase tracking-wide">
+                Programs & Events
+              </Link>
+              <Link href="/register" className="px-4 py-2 border-2 border-accent text-accent rounded-sm font-semibold hover:bg-accent/10 transition-colors text-center">
+                Join Us
               </Link>
             </div>
           </div>
@@ -92,8 +95,11 @@ export default function Header() {
               <Link href="/gallery" className="px-4 py-3 hover:bg-white/10 transition-colors border-b border-white/20 uppercase tracking-wide">
                 Gallery
               </Link>
-              <Link href="/events" className="px-4 py-3 hover:bg-white/10 transition-colors uppercase tracking-wide">
-                Events & Information
+              <Link href="/program" className="px-4 py-3 hover:bg-white/10 transition-colors uppercase tracking-wide">
+                Programs & Events
+              </Link>
+              <Link href="/register" className="px-4 py-3 border-2 border-accent text-accent rounded-lg font-semibold hover:bg-accent/10 transition-colors text-center">
+                Join Us
               </Link>
             </div>
           )}

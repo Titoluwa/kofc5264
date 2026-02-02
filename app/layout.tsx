@@ -16,19 +16,19 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/images/kofc-logo.png',
+        url: '/images/kofc-logo-nobg.png',
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/images/kofc-logo.png',
+        url: '/images/kofc-logo-nobg.png',
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/images/kofc-logo.png',
+        url: '/images/kofc-logo-nobg.png',
         type: 'image/svg+xml',
       },
     ],
-    apple: '/images/kofc-logo.png',
+    apple: '/images/kofc-logo-nobg.png',
   },
 }
 

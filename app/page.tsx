@@ -79,9 +79,8 @@ export default function Home() {
       />
 
       {/* Member Benefits */}
-      <section className="bg-background py-16 lg:py-24">
+      {/* <section className="bg-background py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Wavy divider */}
           <div className="mb-16 text-center">
             <div className="flex justify-center mb-6">
               <div className="w-16 h-16 bg-primary rounded-lg rotate-45 flex items-center justify-center">
@@ -104,7 +103,6 @@ export default function Home() {
             variant="list"
           />
 
-          {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
             <Link
               href="/join"
@@ -120,7 +118,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Charity Section */}
       {/* <StatsSection
