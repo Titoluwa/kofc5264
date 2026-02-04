@@ -68,6 +68,9 @@ export default function Header() {
               <Link href="/resources" className="px-4 py-2 hover:bg-white/10 transition-colors text-sm font-medium uppercase tracking-wide">
                 Resources
               </Link>
+              <Link href="/newsletters" className="px-4 py-2 hover:bg-white/10 transition-colors text-sm font-medium uppercase tracking-wide">
+                Newsletters
+              </Link>
               <Link href="/gallery" className="px-4 py-2 hover:bg-white/10 transition-colors text-sm font-medium uppercase tracking-wide">
                 Gallery
               </Link>
@@ -91,6 +94,9 @@ export default function Header() {
               </Link>
               <Link href="/resources" className="px-4 py-3 hover:bg-white/10 transition-colors border-b border-white/20 uppercase tracking-wide">
                 Resources
+              </Link>
+              <Link href={"/newsletters"} className="px-4 py-3 hover:bg-white/10 transition-colors border-b border-white/20 uppercase tracking-wide">
+                Newsletters
               </Link>
               <Link href="/gallery" className="px-4 py-3 hover:bg-white/10 transition-colors border-b border-white/20 uppercase tracking-wide">
                 Gallery

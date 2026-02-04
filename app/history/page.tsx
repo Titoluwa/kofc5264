@@ -6,7 +6,7 @@ export const metadata = {
 export default function HistoryPage() {
   const milestones = [
     { year: '1882', title: 'Knights of Columbus Founded', description: 'Blessed Michael McGivney establishes the Knights of Columbus in New Haven, Connecticut.' },
-    { year: '1950s', title: 'Council 5264 Established', description: 'Our Lady of the Prairie Council is founded with a mission to serve our local Catholic community.' },
+    { year: '1950s', title: 'Council 5264 Established', description: 'Knights of Columbus - Our Lady of the Prairie, Council 5264 is founded with a mission to serve our local Catholic community.' },
     { year: '1970s', title: 'Community Expansion', description: 'Council grows to over 300 members and launches major charitable initiatives.' },
     { year: '1990s', title: 'Digital Transformation', description: 'Council modernizes with new communication tools while maintaining traditional values.' },
     { year: '2000s', title: 'Program Excellence', description: 'Launches flagship programs including Artarama and expanded charitable work.' },

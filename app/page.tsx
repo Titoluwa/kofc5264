@@ -4,6 +4,7 @@ import StatsSection from '@/components/StatsSection'
 import Link from 'next/link'
 import { Building, Handshake, Heart, Shield, Users, Book } from 'lucide-react'
 import Image from 'next/image'
+import SubscribeNewsletter from '@/components/SubscribeNewsletter'
 
 export const metadata = {
   title: 'Our Lady of the Prairie, Council 5264',
@@ -212,6 +213,8 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      <SubscribeNewsletter/>
     </main>
   )
 }
