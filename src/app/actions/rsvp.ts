@@ -15,9 +15,9 @@ interface RSVPActionParams {
 
 /**
  * Server Action to handle RSVP submission
- * - Validates event exists in Payload
- * - Ensures user exists in Payload Users collection
- * - Records RSVP in Drizzle-managed table
+ * - Validates event exists in database
+ * - Ensures user exists in database
+ * - Records RSVP in database table
  */
 export async function submitRSVP(params: RSVPActionParams) {
   try {

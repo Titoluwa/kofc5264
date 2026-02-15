@@ -1,10 +1,9 @@
-import { pgTable, serial, varchar, text, timestamp, integer, uuid, boolean, jsonb } from 'drizzle-orm/pg-core';
+import { pgTable, serial, varchar, text, timestamp, integer, jsonb } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 
-// Users table (Admin collection in Payload)
+// Users table
 export const users = pgTable('users', {
   id: serial('id').primaryKey(),
-  payloadId: varchar('payload_id').unique(),
   email: varchar('email').unique().notNull(),
   firstName: varchar('first_name'),
   lastName: varchar('last_name'),
@@ -29,10 +28,9 @@ export const memberProfiles = pgTable('member_profiles', {
   updatedAt: timestamp('updated_at').defaultNow(),
 });
 
-// Events table (Content collection in Payload, but we track RSVPs)
+// Events table
 export const events = pgTable('events', {
   id: serial('id').primaryKey(),
-  payloadId: varchar('payload_id').unique(),
   title: varchar('title').notNull(),
   description: text('description'),
   startDate: timestamp('start_date').notNull(),

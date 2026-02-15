@@ -20,10 +20,6 @@ Edit `.env.local` and fill in your values:
 # Format: postgresql://username:password@host:port/database
 DATABASE_URL=postgresql://user:password@localhost:5432/community_db
 
-# Payload CMS Secret (use a strong random string)
-# Generate with: openssl rand -base64 32
-PAYLOAD_SECRET=your-super-secret-key
-
 # Environment
 NODE_ENV=development
 ```
@@ -70,59 +66,9 @@ npm run dev
 
 The application will start on `http://localhost:3000`.
 
-## Step 4: Initialize Payload CMS
+## Step 4: Verify Everything Works
 
-### 4.1 Access Payload Admin
-
-Open your browser and visit: `http://localhost:3000/admin`
-
-### 4.2 Create Admin User
-
-Payload will prompt you to create an admin user on first access:
-- Email: your-email@example.com
-- Password: (create a secure password)
-
-After creating the admin user, you're logged into the Payload admin dashboard.
-
-### 4.3 Create Content Collections
-
-In the Payload admin:
-
-1. **Create Media**
-   - Upload images for event headers and hero sections
-   - Use the Media collection
-
-2. **Create Hero Sections**
-   - Title: "Welcome to Our Community"
-   - Subtitle: "Building connections, making a difference"
-   - Background image: (upload from media)
-   - CTA Text: "Explore Events"
-   - CTA Link: "/events"
-
-3. **Create Events**
-   - Title: "Community Service Day"
-   - Description: "Join us for our monthly community service initiative"
-   - Start Date: (select future date)
-   - Location: "Community Center"
-   - Category: "Charity"
-   - Event Image: (upload from media)
-
-4. **Create Users (Admin Collection)**
-   - Email: member@example.com
-   - First Name: John
-   - Last Name: Doe
-   - Role: "Member"
-   - Password: (secure password)
-
-5. **Create Pages**
-   - Title: "About Us"
-   - Slug: "about"
-   - Content: (rich text content)
-   - Published: true
-
-## Step 5: Verify Everything Works
-
-### 5.1 Check Database
+### 4.1 Check Database
 
 Verify tables were created:
 
@@ -136,22 +82,15 @@ psql -U user -d community_db -c "\dt"
 # - events
 # - rsvps
 # - form_submissions
-# - plus Payload's internal tables
 ```
 
-### 5.2 Test Events Page
+### 4.2 Test Events Page
 
 1. Visit `http://localhost:3000/events`
 2. You should see the events you created
 3. (Optional) Test RSVP button if you've set up authentication
 
-### 5.3 Test Payload Admin
-
-1. Visit `http://localhost:3000/admin`
-2. Log in with admin credentials
-3. Browse collections and edit content
-
-## Step 6: Development Workflow
+## Step 5: Development Workflow
 
 ### Adding New Fields to Events
 
@@ -170,17 +109,7 @@ psql -U user -d community_db -c "\dt"
    npx drizzle-kit migrate
    ```
 
-3. **Update Payload Collection** (if needed)
-   ```typescript
-   // src/payload/collections/Events.ts
-   {
-     name: 'eventType',
-     type: 'select',
-     options: [/* ... */],
-   }
-   ```
-
-4. **Update UI Components**
+3. **Update UI Components**
    Update EventCard or other components to use the new field
 
 ### Creating New Server Actions
@@ -215,7 +144,7 @@ psql -U user -d community_db -c "\dt"
    }
    ```
 
-## Step 7: Production Deployment
+## Step 6: Production Deployment
 
 ### 7.1 Environment Variables
 
@@ -223,7 +152,6 @@ Set these in your hosting platform (Vercel, Railway, etc.):
 
 ```env
 DATABASE_URL=postgresql://user:password@your-prod-db.example.com:5432/db
-PAYLOAD_SECRET=<your-production-secret>
 NODE_ENV=production
 ```
 
@@ -246,12 +174,11 @@ git push origin main
 vercel
 ```
 
-### 7.4 Post-Deployment
+### 6.4 Post-Deployment
 
-1. Visit `your-domain.com/admin`
-2. Create production admin user
-3. Create initial content
-4. Test events page
+1. Test the application
+2. Verify database connectivity
+3. Test events page
 
 ## Troubleshooting
 
@@ -277,7 +204,7 @@ Error: relation "users" already exists
 - If database is fresh, migrations should be new
 - Drop database and restart if needed (dev only): `DROP DATABASE community_db;`
 
-### Payload Admin Not Loading
+### Build Errors
 
 ```
-Error: Cannot find module '@payloadcms/db-postgres'
+Error: Module not found

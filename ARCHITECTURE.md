@@ -1,6 +1,6 @@
 # Community Website Architecture
 
-This document outlines the architecture of the professional community website built with **Payload CMS 3.x**, **Drizzle ORM**, **Next.js 15**, and **PostgreSQL**.
+This document outlines the architecture of the professional community website built with **Drizzle ORM**, **Next.js 15**, and **PostgreSQL**.
 
 ## 🏗️ System Overview
 
@@ -16,13 +16,13 @@ This document outlines the architecture of the professional community website bu
                │
         ┌──────┴─────────┐
         │                │
-    ┌───▼────────────┐  ┌──▼──────────────────┐
-    │  Payload CMS   │  │ Drizzle ORM         │
-    │  (Content &    │  │ (App Data)          │
-    │   Admin Colls) │  │                     │
-    └────┬──────────┘  └──┬───────────────────┘
-         │                 │
-         └────────┬────────┘
+    ┌───▼────────────┐  │
+    │ Drizzle ORM    │  │
+    │ (App Data)     │  │
+    │                │  │
+    └────┬──────────┘  │
+         │              │
+         └────────┬─────┘
                   │
          ┌────────▼────────┐
          │  PostgreSQL DB  │
@@ -30,7 +30,7 @@ This document outlines the architecture of the professional community website bu
          └─────────────────┘
 ```
 
-### Three-Layer Architecture
+### Two-Layer Architecture
 
 1. **Presentation Layer** (Next.js)
    - Server Components for data fetching
@@ -38,16 +38,10 @@ This document outlines the architecture of the professional community website bu
    - API routes for external/client queries
    - Client components for interactive UI
 
-2. **CMS Layer** (Payload)
-   - Content collections (Pages, Media, Hero Sections, Events)
-   - Admin collections (Users, Programs, Form Submissions)
-   - Admin dashboard for content editors and administrators
-   - Native authentication for Payload users
-
-3. **Data Layer** (Drizzle + PostgreSQL)
-   - Custom Drizzle-managed tables for application data
-   - Relational tables not managed by Payload
-   - Hybrid database where both Payload and Drizzle tables coexist
+2. **Data Layer** (Drizzle + PostgreSQL)
+   - Drizzle-managed tables for application data
+   - Relational database schema
+   - Type-safe database queries
 
 ## 📂 Project Structure
 
@@ -70,16 +64,6 @@ project-root/
 │   │   ├── schema.ts                    # Drizzle schema definitions
 │   │   ├── index.ts                     # Drizzle client initialization
 │   │   └── migrations/                  # Auto-generated migrations
-│   ├── payload/
-│   │   ├── collections/
-│   │   │   ├── Media.ts                 # Media collection (content)
-│   │   │   ├── Pages.ts                 # Pages collection (content)
-│   │   │   ├── HeroSections.ts          # Hero sections (content)
-│   │   │   ├── Events.ts                # Events collection (content)
-│   │   │   ├── Users.ts                 # Users collection (admin)
-│   │   │   └── Programs.ts              # Programs collection (admin)
-│   │   └── ...
-│   └── payload.config.ts                # Payload CMS configuration
 ├── drizzle.config.ts                    # Drizzle Kit configuration
 ├── next.config.mjs                      # Next.js configuration
 ├── package.json
@@ -88,25 +72,12 @@ project-root/
 
 ## 🗄️ Database Schema
 
-### Payload-Managed Collections
-
-**Content Collections** (visible to editors):
-- `media` - Media uploads (images, videos, audio)
-- `pages` - Marketing pages with slug-based routing
-- `hero-sections` - Hero banners for pages
-- `events` - Public event listings
-
-**Admin Collections** (hidden from non-admins):
-- `users` - User accounts with authentication
-- `programs` - Community programs and initiatives
-
 ### Drizzle-Managed Tables
 
 ```sql
--- Users (linked to Payload users)
+-- Users
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  payload_id VARCHAR UNIQUE,
   email VARCHAR UNIQUE NOT NULL,
   first_name VARCHAR,
   last_name VARCHAR,
@@ -131,10 +102,9 @@ CREATE TABLE member_profiles (
   updated_at TIMESTAMP DEFAULT NOW()
 );
 
--- Events (content from Payload)
+-- Events
 CREATE TABLE events (
   id SERIAL PRIMARY KEY,
-  payload_id VARCHAR UNIQUE,
   title VARCHAR NOT NULL,
   description TEXT,
   start_date TIMESTAMP NOT NULL,
@@ -146,7 +116,7 @@ CREATE TABLE events (
   updated_at TIMESTAMP DEFAULT NOW()
 );
 
--- RSVPs (custom application data)
+-- RSVPs
 CREATE TABLE rsvps (
   id SERIAL PRIMARY KEY,
   event_id INTEGER NOT NULL REFERENCES events(id) ON DELETE CASCADE,
@@ -195,31 +165,15 @@ User clicks "Going" button
 └─ Success: UI updates with new status
 ```
 
-### Example 3: Content Management
-
-```
-Editor creates new event in Payload Admin
-├─ Payload CMS: Accepts event creation
-├─ Database: Inserts into Payload's events collection
-├─ Webhook (optional): Syncs to Drizzle events table
-├─ Frontend: Queries Drizzle events table
-└─ User: Sees new event in /events listing
-```
-
 ## 🔐 Security & Access Control
 
 ### Authentication
-- **Payload Users**: Native Payload CMS authentication
+- **User Authentication**: Implement custom authentication or use NextAuth.js
 - **Role-based Access Control**:
   - `admin` - Full system access
-  - `editor` - Can edit content collections
+  - `editor` - Can edit content
   - `moderator` - Can moderate content
   - `member` - Limited to personal data
-
-### Admin Collections Visibility
-- Admin collections are hidden from non-admin users
-- Configured via `hidden: ({ user }) => user?.role !== 'admin'`
-- Enforced on both UI and API levels
 
 ### Database Security
 - Server Actions execute on the server (secure)
@@ -274,11 +228,9 @@ Editor creates new event in Payload Admin
 
 ```json
 {
-  "payload": "^3.0.0",
   "drizzle-orm": "^0.30.0",
   "drizzle-kit": "^0.20.0",
   "pg": "^8.11.0",
-  "@payloadcms/db-postgres": "^3.0.0",
   "next": "16.0.10",
   "react": "19.2.0",
   "tailwindcss": "^4.1.9"
@@ -290,7 +242,7 @@ Editor creates new event in Payload Admin
 ### 1. Environment Setup
 ```bash
 cp env.example .env.local
-# Fill in DATABASE_URL and PAYLOAD_SECRET
+# Fill in DATABASE_URL
 ```
 
 ### 2. Database Setup
@@ -300,44 +252,31 @@ npx drizzle-kit generate:pg
 npx drizzle-kit migrate
 ```
 
-### 3. Payload CMS Setup
+### 3. Start Development
 ```bash
 npm run dev
-# Visit http://localhost:3000/admin
-# Create admin user during first setup
-```
-
-### 4. Seed Data
-```bash
-# Use Payload admin to create content collections
-# Drizzle tables are automatically synced
+# Visit http://localhost:3000
 ```
 
 ## 🎯 Key Design Decisions
 
-1. **Hybrid Database**: Single PostgreSQL instance with both Payload and Drizzle tables allows:
-   - Relational integrity between CMS content and app data
+1. **PostgreSQL Database**: Single PostgreSQL instance for all application data
+   - Relational integrity
    - Single database connection
    - Simplified deployment and backups
 
-2. **Content-First Approach**: Payload handles all marketing/content content, Drizzle handles application state
-   - Cleanly separates editor responsibilities
-   - Allows non-technical users to manage content
-   - Admin collections for sensitive application data
-
-3. **Server-First Data Fetching**: Next.js 13+ App Router with Server Components
+2. **Server-First Data Fetching**: Next.js 15 App Router with Server Components
    - Data fetched at build time or request time
    - No unnecessary client-side data fetching
    - Natural integration with Drizzle ORM
 
-4. **Server Actions for Mutations**: Secure server-side mutations without exposing database
+3. **Server Actions for Mutations**: Secure server-side mutations without exposing database
    - RSVP submission handled securely
    - Cache revalidation built-in
    - No client-side API credentials needed
 
 ## 📚 Further Reading
 
-- [Payload CMS Documentation](https://payloadcms.com/docs)
 - [Drizzle ORM Documentation](https://orm.drizzle.team)
 - [Next.js 15 Documentation](https://nextjs.org/docs)
 - [PostgreSQL Documentation](https://www.postgresql.org/docs)
