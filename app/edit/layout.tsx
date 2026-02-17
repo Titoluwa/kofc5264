@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { LogOut, Menu } from 'lucide-react';
+import { BookOpenTextIcon, CalendarClockIcon, Layers, LayoutDashboard, LetterTextIcon, LogOut, Menu, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
@@ -15,12 +15,13 @@ interface User {
 }
 
 const navItems = [
-  { href: '/edit', label: 'Dashboard', icon: '📊' },
-  { href: '/edit/events', label: 'Events', icon: '📅' },
-  { href: '/edit/programs', label: 'Programs', icon: '🎓' },
-  { href: '/edit/resources', label: 'Resources', icon: '📚' },
-  { href: '/edit/newsletters', label: 'Newsletters', icon: '📧' },
-  { href: '/edit/pages', label: 'Pages', icon: '📄' },
+  { href: '/edit', label: 'Dashboard', icon: <LayoutDashboard/> },
+  { href: '/edit/members', label: 'Members', icon: <Users/> },
+  { href: '/edit/pages', label: 'Pages', icon: <Layers/> },
+  { href: '/edit/events', label: 'Events and Programs', icon: <CalendarClockIcon/> },
+  { href: '/edit/resources', label: 'Resources', icon: <BookOpenTextIcon /> },
+  { href: '/edit/newsletters', label: 'Newsletters', icon: <LetterTextIcon /> },
+  { href: '/edit/pages', label: 'Pages', icon: <Layers/> },
 ];
 
 export default function EditLayout({
@@ -82,7 +83,7 @@ export default function EditLayout({
       <aside className="hidden md:flex md:w-64 md:flex-col md:border-r md:bg-muted/50">
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
           <div className="mb-8">
-            <h1 className="text-xl font-bold">K of C CMS</h1>
+            <h1 className="text-2xl font-bold text-primary font-serif">KofC CMS</h1>
             <p className="text-sm text-muted-foreground">{user.name}</p>
           </div>
 
@@ -116,7 +117,7 @@ export default function EditLayout({
       {/* Mobile Menu */}
       <div className="md:hidden fixed top-0 left-0 right-0 bg-background border-b z-40">
         <div className="flex items-center justify-between p-4">
-          <h1 className="font-bold">K of C CMS</h1>
+          <h1 className="font-bold">KofC CMS</h1>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">

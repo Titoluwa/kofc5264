@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { BookmarkPlusIcon, CalendarCogIcon, Layers2Icon, MailPlusIcon } from 'lucide-react';
 
 interface Stats {
   events: number;
@@ -61,22 +62,13 @@ export default function DashboardPage() {
           <p className="text-muted-foreground">Loading statistics...</p>
         </div>
       ) : (
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Events</CardTitle>
+              <CardTitle className="text-sm font-medium text-muted-foreground">Events and Programs</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stats.events}</div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Programs</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{stats.programs}</div>
+              <div className="text-2xl font-bold">{stats.events + stats.programs}</div>
             </CardContent>
           </Card>
 
@@ -91,10 +83,28 @@ export default function DashboardPage() {
 
           <Card>
             <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Members</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{stats.resources}</div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground">Newsletters</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{stats.newsletters}</div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Gallery</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{stats.programs}</div>
             </CardContent>
           </Card>
 
@@ -116,22 +126,30 @@ export default function DashboardPage() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg hover:bg-muted cursor-pointer">
-              <h3 className="font-semibold mb-2">📅 Create an Event</h3>
-              <p className="text-sm text-muted-foreground">Add a new event to the website</p>
-            </div>
-            <div className="p-4 border rounded-lg hover:bg-muted cursor-pointer">
-              <h3 className="font-semibold mb-2">📚 Add a Resource</h3>
-              <p className="text-sm text-muted-foreground">Create new resources or links</p>
-            </div>
-            <div className="p-4 border rounded-lg hover:bg-muted cursor-pointer">
-              <h3 className="font-semibold mb-2">📧 Send Newsletter</h3>
-              <p className="text-sm text-muted-foreground">Compose and send a newsletter</p>
-            </div>
-            <div className="p-4 border rounded-lg hover:bg-muted cursor-pointer">
-              <h3 className="font-semibold mb-2">📄 Manage Pages</h3>
-              <p className="text-sm text-muted-foreground">Edit static page content</p>
-            </div>
+            <a href="/edit/events">
+              <div className="p-4 border rounded-lg hover:bg-muted cursor-pointer">
+                <h3 className="font-semibold mb-2"> <CalendarCogIcon/> Create an Event</h3>
+                <p className="text-sm text-muted-foreground">Add a new event to the website</p>
+              </div>
+            </a>
+            <a href="/edit/resources">
+              <div className="p-4 border rounded-lg hover:bg-muted cursor-pointer">
+                <h3 className="font-semibold mb-2"><BookmarkPlusIcon/> Add a Resource</h3>
+                <p className="text-sm text-muted-foreground">Create new resources or links</p>
+              </div>
+            </a>
+            <a href="/edit/newsletters">
+              <div className="p-4 border rounded-lg hover:bg-muted cursor-pointer">
+                <h3 className="font-semibold mb-2"><MailPlusIcon/> Send Newsletter</h3>
+                <p className="text-sm text-muted-foreground">Compose and send a newsletter</p>
+              </div>
+            </a>
+            <a href="/edit/pages">         
+              <div className="p-4 border rounded-lg hover:bg-muted cursor-pointer">
+                <h3 className="font-semibold mb-2"><Layers2Icon/> Manage Pages</h3>
+                <p className="text-sm text-muted-foreground">Edit static page content</p>
+              </div>
+            </a>
           </div>
         </CardContent>
       </Card>
